@@ -1,0 +1,8 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render partial: "shared/category", locals: { category: @category } %>
+<% @transacs.each do |transac| %>
+    <%= render partial: "shared/transac", locals: { transac: transac } %>
+<% end %>
+
+<%= link_to "New transaction", new_transac_path %>

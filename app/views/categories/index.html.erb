@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+<% if @categories.blank?%>
+  <p>You don't have any category yet! Click below to add one.</p>
+<% else %>
+  <% @categories.each do |category| %>
+    <%= render partial: "shared/category", locals: { category: category } %>
+  <% end %>
+<% end %>
+
+<%= link_to "New category", new_category_path %>
