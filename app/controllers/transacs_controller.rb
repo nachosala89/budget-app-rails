@@ -1,4 +1,5 @@
 class TransacsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_transac, only: %i[ show edit update destroy ]
 
   # GET /transacs or /transacs.json
