@@ -1,8 +1,11 @@
-<%= render @user %>
+<%= render partial: "shared/second_navbar", locals: { title: "MY ACCOUNT" } %>
 
-<div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
+<section class="container">
+  <%= render @user %>
+</section>
 
-  <%= button_to "Destroy this user", @user, method: :delete %>
+<div class="bottom-container position-fixed bottom-0 w-100">
+  <div class="inner-bottom-container text-center">
+    <%= link_to "DELETE ACCOUNT", user_path, data: { 'turbo-method': :delete }, class: "bottom-btn" %>
+  </div>
 </div>

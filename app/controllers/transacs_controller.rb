@@ -4,21 +4,13 @@ class TransacsController < ApplicationController
 
   # GET /transacs or /transacs.json
   def index
-    @transacs = Transac.all
-  end
-
-  # GET /transacs/1 or /transacs/1.json
-  def show
+    @transacs = Transac.where(user: current_user)
   end
 
   # GET /transacs/new
   def new
     @transac = Transac.new
     @categories = Category.where(user: current_user)
-  end
-
-  # GET /transacs/1/edit
-  def edit
   end
 
   # POST /transacs or /transacs.json
@@ -42,16 +34,6 @@ class TransacsController < ApplicationController
       else
         format.html { redirect_to new_transac_path, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /transacs/1 or /transacs/1.json
-  def destroy
-    @transac.destroy
-
-    respond_to do |format|
-      format.html { redirect_to transacs_url, notice: "Transac was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 
