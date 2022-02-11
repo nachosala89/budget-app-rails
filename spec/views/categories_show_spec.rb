@@ -5,6 +5,10 @@ RSpec.describe 'Categories index page', type: :system do
     before(:all) do
       @user = User.create(name: 'nacho', password: '123456', email: 'nacho@gmail.com')
       @category = Category.create(name: "Food", icon: "https://picsum.photos/200", user: @user)
+      @transac1 = Transac.create(name: 'Greengrocery', amount: 20, user: @user)
+      @cat_trans1 = CategoryTransac.create(category: @category, transac: @transac1)
+      @transac2 = Transac.create(name: 'Meat', amount: 10, user: @user)
+      @cat_trans2 = CategoryTransac.create(category: @category, transac: @transac2)
     end
 
     before(:each) do
@@ -16,14 +20,22 @@ RSpec.describe 'Categories index page', type: :system do
     end
 
     after(:all) do
+      @cat_trans1.destroy
+      @cat_trans2.destroy
+      @transac1.destroy
+      @transac2.destroy
       @category.destroy
       @user.destroy
     end
 
     it 'should shows the correct content' do
-      visit categories_path
+      visit category_path(@category.id)
       expect(page).to have_content('Food')
-      expect(page).to have_content("$0")
+      expect(page).to have_content("$30")
+      expect(page).to have_content("$20")
+      expect(page).to have_content("Greengrocery")
+      expect(page).to have_content("$10")
+      expect(page).to have_content("Meat")
     end
   end
 end
