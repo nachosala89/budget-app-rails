@@ -1,24 +1,66 @@
-# README
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# TrackMyCa$h App
 
-Things you may want to cover:
+> This project consists of an web app to track your budget. It was proposed as Capstone Project for the Microverse Ruby on Rails module.
 
-* Ruby version
+![screenshot](./readme_img/screenshot.png)
 
-* System dependencies
+# ERD
 
-* Configuration
+![ERD](./readme_img/erd_budget_app.png)
 
-* Database creation
+# Video
 
-* Database initialization
+You can see this app working [here](https://www.loom.com/share/583fcb82907c466ca246ddaf713e5e9b).
 
-* How to run the test suite
+## Built With
 
-* Services (job queues, cache servers, search engines, etc.)
+- Ruby
+- Ruby on Rails
+- Devise
+- Capybara
+- CSS
 
-* Deployment instructions
+### Prerequisites
 
-* ...
+- Ruby >= 3.0.0
+
+### Setup
+
+- Run git clone on this project at the desired directory:
+   ```
+   git clone https://github.com/nachosala89/budget-app-rails.git
+   ```
+- Go to the cloned directory with `cd budget-app-rails`.
+- Install dependencies with bundle install.
+- install RSpec on your system with `gem install rspec`.
+
+### Run the program
+- Follow the setup instructions.
+- Make sure you're inside the correct directory `budget-app-rails`.
+- Run `bin/rails server` on the terminal to start Puma server.
+- In your browser, go to `http://127.0.0.1:3000` to interact with the site.
+
+### Test
+
+- Rspec Test Tool
+``` 
+rspec spec/
+```
+
+## Authors
+
+👤 **Nacho Sala**
+
+- GitHub: [@nachosala89](https://github.com/nachosala89)
+- Twitter: [@nachosala89](https://twitter.com/nachosala89)
+- LinkedIn: [Juan Ignacio Sala](https://www.linkedin.com/in/nacho-sala)
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+## Show your support
+
+Give a ⭐️ if you like this project! 😄
