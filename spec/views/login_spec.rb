@@ -8,7 +8,7 @@ RSpec.describe 'User Validation', type: :system do
       expect(page).to have_field('Password')
       expect(page).to have_selector(:link_or_button, 'LOG IN')
     end
-    
+
     it 'should redirect to the categories page if the data is correct' do
       visit new_user_session_path
       User.create(name: 'mat', email: 'nacho@gmail.com', password: '123456')

@@ -5,12 +5,12 @@ RSpec.describe CategoryTransac, type: :model do
     before(:all) do
       @user = User.create(name: 'John Smith', password: '123456', email: 'johnsmith@gmail.com')
       @transac = Transac.create(name: 'Greengrocery', amount: 20, user: @user)
-      @category = Category.create(name: "Food", icon: "https://picsum.photos/200", user: @user)
+      @category = Category.create(name: 'Food', icon: 'https://picsum.photos/200', user: @user)
     end
     subject { CategoryTransac.new(category: @category, transac: @transac) }
-    
-      before { subject.save }
-    
+
+    before { subject.save }
+
     after(:all) do
       @user.destroy
     end

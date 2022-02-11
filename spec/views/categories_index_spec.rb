@@ -4,7 +4,7 @@ RSpec.describe 'Categories index page', type: :system do
   describe 'Content displayed by this page' do
     before(:all) do
       @user = User.create(name: 'nacho', password: '123456', email: 'nacho@gmail.com')
-      @category = Category.create(name: "Food", icon: "https://picsum.photos/200", user: @user)
+      @category = Category.create(name: 'Food', icon: 'https://picsum.photos/200', user: @user)
     end
 
     before(:each) do
@@ -23,7 +23,7 @@ RSpec.describe 'Categories index page', type: :system do
     it 'should shows the correct content' do
       visit categories_path
       expect(page).to have_content('Food')
-      expect(page).to have_content("$0")
+      expect(page).to have_content('$0')
     end
   end
 end

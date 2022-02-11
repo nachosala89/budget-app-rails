@@ -6,7 +6,7 @@ RSpec.describe Category, type: :model do
       @user = User.create(name: 'John Smith', password: '123456', email: 'johnsmith@gmail.com')
     end
     subject do
-      Category.create(name: "Food", icon: "https://picsum.photos/200", user: @user)
+      Category.create(name: 'Food', icon: 'https://picsum.photos/200', user: @user)
     end
     before { subject.save }
     after(:all) do

@@ -1,6 +1,6 @@
 class TransacsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_transac, only: %i[ show edit update destroy ]
+  before_action :set_transac, only: %i[show edit update destroy]
 
   # GET /transacs or /transacs.json
   def index
@@ -18,18 +18,16 @@ class TransacsController < ApplicationController
     @transac = Transac.new(transac_params)
     @transac.user = current_user
     @transac.save
-    unless params[:categories].blank?
-      params[:categories].each do |k,v|
-        CategoryTransac.create(category: Category.find(k), transac: @transac)
-      end
-    end
+    create_cat_transacs unless params[:categories].blank?
     respond_to do |format|
       if @transac.persisted?
         if @transac.categories.blank?
           @transac.destroy
-          format.html { redirect_to new_transac_path, alert: "Transaction must have at least one category." }
-        else 
-          format.html { redirect_to category_url(@transac.categories.first), notice: "Transaction was successfully created." }
+          format.html { redirect_to new_transac_path, alert: 'Transaction must have at least one category.' }
+        else
+          format.html do
+            redirect_to category_url(@transac.categories.first), notice: 'Transaction was successfully created.'
+          end
         end
       else
         format.html { redirect_to new_transac_path, status: :unprocessable_entity }
@@ -38,13 +36,20 @@ class TransacsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_transac
-      @transac = Transac.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def transac_params
-      params.require(:transac).permit(:name, :amount)
+  # Use callbacks to share common setup or constraints between actions.
+  def set_transac
+    @transac = Transac.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def transac_params
+    params.require(:transac).permit(:name, :amount)
+  end
+
+  def create_cat_transacs
+    params[:categories].each do |k, _v|
+      CategoryTransac.create(category: Category.find(k), transac: @transac)
     end
+  end
 end

@@ -36,7 +36,7 @@ RSpec.describe 'New category page', type: :system do
       sleep(3)
       expect(page).to have_content('Food')
       expect(page).to have_css("img[src*='https://picsum.photos/200']")
-      expect(page).to have_content("$0")
+      expect(page).to have_content('$0')
     end
   end
 end
